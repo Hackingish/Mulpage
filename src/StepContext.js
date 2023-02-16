@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import App from "./App";
 export const multiStepContext = React.createContext();
 const StepContext = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState([]);
   const [finalData, setFinalData] = useState([]);
+  // const history = useHistory();
+
   async function submitdata() {
-    setFinalData((finalData) => [...finalData, userData]);
+    await setFinalData((finalData) => [...finalData, userData]);
     setCurrentStep(1);
+    // history.push("/preview");
+    // console.log(userData);
+
     try {
       const res = await fetch("http://localhost:5000/submit/", {
         method: "POST",
@@ -20,14 +26,20 @@ const StepContext = () => {
           lastname: userData["lastname"],
           contact: userData["contact"],
           email: userData["email"],
+          gender: userData["gender"],
         }),
       });
-      setUserData("");
-      if (res) alert("success");
+
+      if (res) {
+        // await setUserData("");
+        console.log(userData);
+        alert("success");
+      }
     } catch (error) {
       console.log(error);
     }
   }
+  useEffect(() => {}, [setUserData]);
   return (
     <multiStepContext.Provider
       value={{

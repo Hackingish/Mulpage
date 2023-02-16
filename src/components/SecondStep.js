@@ -17,6 +17,7 @@ export const SecondStep = () => {
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+    setUserData({ ...userData, gender: event.target.value });
   };
 
   return (
@@ -38,19 +39,19 @@ export const SecondStep = () => {
         Select Your Gender
         <RadioGroup value={selectedOption} onChange={handleOptionChange}>
           <FormControlLabel
-            value="option1"
+            value="male"
             control={<Radio />}
             label="Male"
             labelPlacement="end"
           />
           <FormControlLabel
-            value="option2"
+            value="female"
             control={<Radio />}
             label="Female"
             labelPlacement="end"
           />
           <FormControlLabel
-            value="option3"
+            value="other"
             control={<Radio />}
             label="Others"
             labelPlacement="end"

@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 function DBconnect() {
   const DB_URL =
-    "mongodb+srv://admin:admin@cluster0.wb6mrti.mongodb.net/?retryWrites=true&w=majority";
-
+    "mongodb+srv://admin:admin@cluster0.hauq4jn.mongodb.net/?retryWrites=true&w=majority";
   mongoose.connect(DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { multiStepContext } from "../StepContext";
-
+import { useHistory } from "react-router-dom";
 export const ThirdStep = () => {
   const { setCurrentStep, userData, setUserData, submitdata } =
     useContext(multiStepContext);
   const [selectedFile, setSelectedFile] = useState(null);
+  const history = useHistory();
 
   function handleFileChange(event) {
     setSelectedFile(event.target.files[0]);
+    setUserData({ ...userData, file: event.target.files[0] });
   }
 
   return (
@@ -41,7 +43,14 @@ export const ThirdStep = () => {
         >
           Back
         </Button>
-        <Button variant="contained" color="success" onClick={submitdata}>
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => {
+            history.push("/preview");
+            submitdata();
+          }}
+        >
           Submit
         </Button>
       </div>

@@ -5,6 +5,7 @@ const Usermodel = mongoose.Schema(
     lastname: { type: String, required: true },
     contact: { type: String, required: true },
     email: { type: String, required: true },
+    gender: { type: String, required: true },
   },
   {
     timestamps: true,

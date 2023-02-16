@@ -58,9 +58,7 @@ export const FirstStep = () => {
           type={"text"}
           value={userData["contact"]}
           onChange={(e) => {
-            if (isValidPhoneNumber(e.target.value)) {
-              setUserData({ ...userData, contact: e.target.value });
-            }
+            setUserData({ ...userData, contact: e.target.value });
           }}
         />
       </div>
@@ -69,7 +67,8 @@ export const FirstStep = () => {
           variant="contained"
           color="success"
           onClick={(e) => {
-            setCurrentStep(2);
+            if (isValidPhoneNumber(userData["contact"])) setCurrentStep(2);
+            else alert("not valid phone");
           }}
         >
           Next
