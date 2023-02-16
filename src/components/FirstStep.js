@@ -7,6 +7,16 @@ export const FirstStep = () => {
     useContext(multiStepContext);
   console.log(currentStep);
 
+  const isValidPhoneNumber = (number) => {
+    const regex = /^\d{10}$/;
+    return regex.test(number);
+  };
+
+  const isValidName = (name) => {
+    const regex = /^[a-zA-Z\s]*$/;
+    return regex.test(name);
+  };
+
   return (
     <div>
       <div>
@@ -17,7 +27,9 @@ export const FirstStep = () => {
           color="secondary"
           type={"text"}
           onChange={(e) => {
-            setUserData({ ...userData, firstname: e.target.value });
+            if (isValidName(e.target.value)) {
+              setUserData({ ...userData, firstname: e.target.value });
+            }
           }}
           value={userData["firstname"]}
         />
@@ -31,7 +43,9 @@ export const FirstStep = () => {
           type={"text"}
           value={userData["lastname"]}
           onChange={(e) => {
-            setUserData({ ...userData, lastname: e.target.value });
+            if (isValidName(e.target.value)) {
+              setUserData({ ...userData, lastname: e.target.value });
+            }
           }}
         />
       </div>
@@ -44,7 +58,9 @@ export const FirstStep = () => {
           type={"text"}
           value={userData["contact"]}
           onChange={(e) => {
-            setUserData({ ...userData, contact: e.target.value });
+            if (isValidPhoneNumber(e.target.value)) {
+              setUserData({ ...userData, contact: e.target.value });
+            }
           }}
         />
       </div>

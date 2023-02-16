@@ -39,19 +39,19 @@ export const SecondStep = () => {
         <RadioGroup value={selectedOption} onChange={handleOptionChange}>
           <FormControlLabel
             value="option1"
-            control={<Radio color="primary" />}
+            control={<Radio />}
             label="Male"
             labelPlacement="end"
           />
           <FormControlLabel
             value="option2"
-            control={<Radio color="secondary" />}
+            control={<Radio />}
             label="Female"
             labelPlacement="end"
           />
           <FormControlLabel
             value="option3"
-            control={<Radio color="success" />}
+            control={<Radio />}
             label="Others"
             labelPlacement="end"
           />
